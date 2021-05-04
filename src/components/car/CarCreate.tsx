@@ -23,18 +23,19 @@ export interface CarCreateState {
 
 
 const CarCreate: React.SFC<CarCreateProps> = (props) => {
-    const [year, setYear] = React.useState<number>(0);
-    const [make, setMake] = React.useState<string>('');
-    const [model, setModel] = React.useState<string>('');
-    const [color, setColor] = React.useState<string>('');
-    const [mileage, setMileage] = React.useState<number>(0);
-    const [vin, setVin] = React.useState<string>('');
-    const [description, setDescription] = React.useState<string>('');
+    const [year, setYear] = useState<number>(0);
+    const [make, setMake] = useState<string>('');
+    const [model, setModel] = useState<string>('');
+    const [color, setColor] = useState<string>('');
+    const [mileage, setMileage] = useState<number>(0);
+    const [vin, setVin] = useState<string>('');
+    const [description, setDescription] = useState<string>('');
+    const [img, setImg] = useState<Blob | null>();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         fetch('http://localhost:3000/car/postSale', {
-            method: 'POST',
+            method: "POST",
             body: JSON.stringify({
                 car: {
                     year: year,
@@ -43,11 +44,12 @@ const CarCreate: React.SFC<CarCreateProps> = (props) => {
                     color: color,
                     mileage: mileage,
                     vin: vin,
-                    description: description
+                    description: description,
+                    img: img
                 }
             }),
             headers: new Headers({
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
                 Authorization: props.token
             }),
         })
@@ -62,13 +64,21 @@ const CarCreate: React.SFC<CarCreateProps> = (props) => {
                 setMileage(0);
                 setVin('');
                 setDescription('');
+                setImg();
                 props.fetchCars();
             })
         }
 
+        const linkStyle = {
+            textDecoration: 'underline #554348',
+            color: '#93B7BE',
+            backgroundColor: '#554348',
+            fontWeight: 'bold'
+        }
+
         return(
             <Grid container>
-                <FormControl onSubmit={handleSubmit}>
+                <FormControl>
                     <h1>Post Listing</h1>
                     <Grid item direction='row'>
                         <TextField id="standard-basic" label="Year" onChange={((e) => setYear(Number(e.target.value)))} value={year} required />
@@ -81,8 +91,11 @@ const CarCreate: React.SFC<CarCreateProps> = (props) => {
                         <TextField id="standard-basic" label="Vin" onChange={(e) => setVin(e.target.value)} value={vin} required />
                     </Grid>
                         <TextField id="standard-basic" label="Description" onChange={(e) => setDescription(e.target.value)} value={description} required />
+                        <br />
+                        <input type='file' />
+                        <Button style={linkStyle}>Upload</Button>
                     <br />
-                    <Button variant="contained" color="primary" type='submit'>Submit</Button>
+                    <Button variant="contained" style={linkStyle} onClick={handleSubmit}>Submit</Button>
                 </FormControl>
             </Grid>
         )

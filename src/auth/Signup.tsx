@@ -76,7 +76,7 @@ class Signup extends React.Component<SignupProps, SignupState> {
                     <TextField id="standard-basic" label="Password" type='password' onChange={(e) => this.setState({password: e.target.value})} value={this.state.password} required />
                     <br />
                     <br />
-                    <Button variant="outlined" color="primary" type='submit'>Sign Up</Button>
+                    <Button style={{textDecoration: 'underline #554348', color: '#93B7BE', backgroundColor: '#554348',fontWeight: 'bold'}} type='submit'>Sign Up</Button>
                 </form>
             </div>
         )

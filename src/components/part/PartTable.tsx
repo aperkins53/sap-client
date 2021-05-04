@@ -29,12 +29,16 @@ const PartTable = (props) => {
         },
       });
     
+      const cardStyle = {
+        backgroundColor: '#554348'
+      }
+
     const classes = useStyles();
 
     return props.parts.map((part, index) => {
         return(
             <div>
-            <Card className={classes.root}>
+            <Card className={classes.root} style={cardStyle}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
@@ -43,17 +47,21 @@ const PartTable = (props) => {
                 />
                 <CardContent>
                   <Grid direction='row' >
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h5" component="h2" style={{color: '#93B7BE'}}>
                       {part.partName} from a {part.caryYear} {part.carMake} {part.carModel}
                     </Typography>
                   </Grid>
+                  <Typography variant="body2" color="textSecondary" component="p" style={{color: '#93B7BE', width: '25vw'}}>
+                    Condition: {part.condition}<br />
+                    Price: {part.price}
+              </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary" onClick={() => {props.editUpdatePart(part); props.updateOn()}}>
+                <Button size="small" style={{color: '#93B7BE'}} onClick={() => {props.editUpdatePart(part); props.updateOn()}}>
                   Edit
                 </Button>
-                <Button size="small" color="primary" onClick={() => {deletePart(part)}}>
+                <Button size="small" style={{color: '#93B7BE'}} onClick={() => {deletePart(part)}}>
                   Delete
                 </Button>
               </CardActions>

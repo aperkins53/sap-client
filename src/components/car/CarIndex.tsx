@@ -39,20 +39,28 @@ const CarIndex = (props) => {
         fetchCars();
     }, []);
 
+    const gridStyle = {
+        backgroundColor: '#D4F5F5',
+        color: '#747578',
+        paddingBottom: '20px'
+    }
+
     return(
-        <Grid container alignItems='center' direction='column'>
-            <Grid>
-                <CarCreate fetchCars={fetchCars} token={props.token} />
+        <Grid container style={gridStyle}>
+            <Grid container alignItems='center' direction='column'>
+                <Grid>
+                    <CarCreate fetchCars={fetchCars} token={props.token} />
+                </Grid>
+                <hr />
+                <Grid>
+                    <CarTable cars={cars} editUpdateCar={editUpdateCar} updateOn={updateOn} updateOff={updateOff} fetchCars={fetchCars} token={props.token} carToUpdate={carToUpdate} />
+                </Grid>
+                {updateActive ? (
+                    <CarEdit carToUpdate={carToUpdate} updateOff={updateOff} token={props.token} fetchCars={fetchCars} updateActive={updateActive} />
+                ) : (
+                    <></>
+                )}
             </Grid>
-            <hr />
-            <Grid>
-                <CarTable cars={cars} editUpdateCar={editUpdateCar} updateOn={updateOn} updateOff={updateOff} fetchCars={fetchCars} token={props.token} carToUpdate={carToUpdate} />
-            </Grid>
-            {updateActive ? (
-                <CarEdit carToUpdate={carToUpdate} updateOf={updateOff} token={props.token} fetchCars={fetchCars} />
-            ) : (
-                <></>
-            )}
         </Grid>
     );
 };

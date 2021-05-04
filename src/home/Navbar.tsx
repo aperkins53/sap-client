@@ -10,16 +10,24 @@ import { Link } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 
 const Navbar = (props) => {
+    const {token} = props;
+
     const linkStyle = {
         textDecoration: 'none',
-        color: 'white'
+        color: '#93B7BE',
+        fontWeight: 'bold'
+    }
+
+    const navStyle = {
+        backgroundColor: '#554348',
+        color: '#93B7BE'
     }
 
     return(
-        <AppBar position="static">
+        <AppBar position="static" style={navStyle}>
         <Toolbar>
             <Typography variant='h6' color='inherit'>
-                SAP Auto Parts
+                Greenwood Auto Parts
             </Typography>
             <Grid container justify='flex-end'>
                 <Link to='/' style={linkStyle}>
@@ -31,7 +39,7 @@ const Navbar = (props) => {
                 <Link to='/parts' style={linkStyle}>
                     <Button color='inherit'>Parts</Button>
                 </Link>
-                <Button color="inherit" onClick={props.clearToken}>Logout</Button>
+                {token ? <Button color="inherit" onClick={props.clearToken}>Logout</Button> : null}
             </Grid>
         </Toolbar>
         </AppBar>

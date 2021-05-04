@@ -39,20 +39,28 @@ const PartIndex = (props) => {
         fetchParts();
     }, []);
 
+    const gridStyle = {
+        backgroundColor: '#D4F5F5',
+        color: '#747578',
+        paddingBottom: '20px'
+    }
+
     return(
-        <Grid container alignItems='center' direction='column'>
-            <Grid>
-                <PartCreate fetchParts={fetchParts} token={props.token} />
+        <Grid container style={gridStyle}>
+            <Grid container alignItems='center' direction='column'>
+                <Grid>
+                    <PartCreate fetchParts={fetchParts} token={props.token} />
+                </Grid>
+                <hr />
+                <Grid>
+                    <PartTable parts={parts} editUpdatePart={editUpdatePart} updateOn={updateOn} updateOff={updateOff} fetchParts={fetchParts} token={props.token} partToUpdate={partToUpdate} />
+                </Grid>
+                {updateActive ? (
+                    <PartEdit partToUpdate={partToUpdate} updateOf={updateOff} token={props.token} fetchParts={fetchParts} updateActive={updateActive}/>
+                ) : (
+                    <></>
+                )}
             </Grid>
-            <hr />
-            <Grid>
-                <PartTable parts={parts} editUpdatePart={editUpdatePart} updateOn={updateOn} updateOff={updateOff} fetchParts={fetchParts} token={props.token} partToUpdate={partToUpdate} />
-            </Grid>
-            {updateActive ? (
-                <PartEdit partToUpdate={partToUpdate} updateOf={updateOff} token={props.token} fetchParts={fetchParts} />
-            ) : (
-                <></>
-            )}
         </Grid>
     );
 };

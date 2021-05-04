@@ -49,7 +49,7 @@ class Login extends React.Component<LoginProps, LoginState> {
 
     render(){
         return(
-            <div>
+            <div style={{backgroundColor: '#D4F5F5'}}>
                 <h1>Login</h1>
                 <form onSubmit={this.onSubmit}>
                     <TextField id="standard-basic" label="Email" onChange={(e) => this.setState({email: e.target.value})} value={this.state.email} required />
@@ -57,7 +57,7 @@ class Login extends React.Component<LoginProps, LoginState> {
                     <TextField id="standard-basic" label="Password" type='password' onChange={(e) => this.setState({password: e.target.value})} value={this.state.password} required />
                     <br />
                     <br />
-                    <Button variant='outlined' color="primary" type='submit'>Login</Button>
+                    <Button style={{textDecoration: 'underline #554348', color: '#93B7BE', backgroundColor: '#554348',fontWeight: 'bold'}} type='submit'>Login</Button>
                 </form>
             </div>
         )

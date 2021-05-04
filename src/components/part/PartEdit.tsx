@@ -25,6 +25,7 @@ const PartEdit = (props) => {
           top: `${top}%`,
           left: `${left}%`,
           transform: `translate(-${top}%, -${left}%)`,
+          backgroundColor: '#93B7BE'
         };
       }
     
@@ -42,11 +43,7 @@ const PartEdit = (props) => {
       function SimpleModal() {
         const classes = useStyles();
         const [modalStyle] = useState(getModalStyle);
-        const [open, setOpen] = useState(false);
-    
-        const handleOpen = () => {
-          setOpen(true);
-        };
+        const [open, setOpen] = useState(props.updateActive);
     
         const handleClose = () => {
           setOpen(false);
@@ -98,7 +95,7 @@ const PartEdit = (props) => {
                 value={editCarModel}
                 required
               />
-              <Button variant="contained" color="primary" type="submit">
+              <Button style={{textDecoration: 'underline #554348', color: '#93B7BE', backgroundColor: '#554348',fontWeight: 'bold'}} type="submit">
                 Submit
               </Button>
             </form>
@@ -107,9 +104,6 @@ const PartEdit = (props) => {
     
         return (
           <div>
-            <button type="button" onClick={handleOpen}>
-              Open Modal
-            </button>
             <Modal
               open={open}
               onClose={handleClose}

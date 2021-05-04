@@ -29,12 +29,16 @@ const CarTable = (props) => {
     },
   });
 
+  const cardStyle = {
+    backgroundColor: '#554348'
+  }
+
   const classes = useStyles();
 
   return props.cars.map((car, index) => {
     return(
-      <div>
-        <Card className={classes.root}>
+      <div style={{marginBottom: '20px'}}>
+        <Card className={classes.root} style={cardStyle}>
           <CardActionArea>
             <CardMedia
               className={classes.media}
@@ -43,21 +47,22 @@ const CarTable = (props) => {
             />
             <CardContent>
               <Grid direction='row' >
-                <Typography gutterBottom variant="h5" component="h2">
+                <Typography gutterBottom variant="h5" component="h2" style={{color: '#93B7BE'}}>
                   {car.year} {car.make} {car.model}
                 </Typography>
               </Grid>
-              <Typography variant="body2" color="textSecondary" component="p">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
+              <Typography variant="body2" color="textSecondary" component="p" style={{color: '#93B7BE', width: '25vw'}}>
+                Color: {car.color}<br />
+                Mileage: {car.mileage}<br />
+                Description: {car.description}
               </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary" onClick={() => {props.editUpdateCar(car); props.updateOn()}}>
+            <Button size="small" style={{color: '#93B7BE'}} onClick={() => {props.editUpdateCar(car); props.updateOn()}}>
               Edit
             </Button>
-            <Button size="small" color="primary" onClick={() => {deleteCar(car)}}>
+            <Button size="small" style={{color: '#93B7BE'}} onClick={() => {deleteCar(car)}}>
               Delete
             </Button>
           </CardActions>

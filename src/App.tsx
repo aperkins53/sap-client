@@ -14,8 +14,10 @@ function App() {
   const [sessionToken, setSessionToken] = useState('');
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setSessionToken(localStorage.getItem("token"));
+    const localToken = localStorage.getItem('token');
+
+    if (localToken) {
+      setSessionToken(localToken);
     }
   }, []);
 
@@ -31,23 +33,16 @@ function App() {
     console.log('user logged out');
   };
 
-  const protectedViews = () => {
-    return sessionToken === localStorage.getItem('token') ? (
-      <Home token={sessionToken} />
-    ) : (
-      <Auth updateToken={updateToken} />
-    );
-  };
-
   return (
     <div className="App">
+      {clearToken}
       <Navbar clearToken={clearToken} token={sessionToken} />
       <Switch>
-        <Route exact path='/' component={Home} /> 
-        <Route exact path='/cars' component={CarIndex} />
-        <Route exact path='/parts' component={PartIndex} />
+        <Route exact path='/' component={() => <Home token={sessionToken} updateToken={updateToken} />} /> 
+        <Route exact path='/cars' component={() => <CarIndex token={sessionToken} />} />
+        <Route exact path='/parts' component={() => <PartIndex token={sessionToken} />} />
       </Switch>   
-      {protectedViews()}
+      <br />
       <Footer />
     </div>
   );

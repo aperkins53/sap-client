@@ -56,6 +56,13 @@ const PartCreate: React.SFC<PartCreateProps> = (props) => {
             })
     }
 
+    const linkStyle = {
+        textDecoration: 'underline #554348',
+        color: '#93B7BE',
+        backgroundColor: '#554348',
+        fontWeight: 'bold'
+    }
+
     return(
         <Grid container>
             <FormControl onSubmit={handleSubmit}>
@@ -71,7 +78,7 @@ const PartCreate: React.SFC<PartCreateProps> = (props) => {
                     <TextField id='standard-basic' label='Car Model' onChange={((e) => setCarModel(e.target.value))} value={carModel} required />
                 </Grid>
                 <br />
-                <Button variant='contained' color='primary' type='submit'>Submit</Button>
+                <Button variant='contained' style={linkStyle} type='submit'>Submit</Button>
             </FormControl>
         </Grid>
     )

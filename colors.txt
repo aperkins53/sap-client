@@ -1,0 +1,8 @@
+dark sky blue - #93B7BE
+dark liver (navbar) - #554348
+light cyan - #D4F5F5
+cadet grey - #8C9A9E
+sonic silver - #747578
+
+how to save an image/display on card - blue badge modules cloudinary
+part component not working
