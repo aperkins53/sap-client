@@ -37,24 +37,30 @@ const PartTable = (props) => {
 
     return props.parts.map((part, index) => {
         return(
-            <div>
+            <div style={{marginBottom: '20px'}}>
             <Card className={classes.root} style={cardStyle}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="#"
+                  image={part.img}
                   title="#"
+                  style={{height: '300px'}}
                 />
                 <CardContent>
-                  <Grid direction='row' >
+                  <Grid direction='row' justify='center'>
                     <Typography gutterBottom variant="h5" component="h2" style={{color: '#93B7BE'}}>
-                      {part.partName} from a {part.caryYear} {part.carMake} {part.carModel}
+                      {part.partName}
                     </Typography>
                   </Grid>
-                  <Typography variant="body2" color="textSecondary" component="p" style={{color: '#93B7BE', width: '25vw'}}>
-                    Condition: {part.condition}<br />
-                    Price: {part.price}
-              </Typography>
+                  <Grid container direction='row' justify='center'>
+                      <Typography variant="body2" color="textSecondary" component="p" style={{color: '#93B7BE', width: '25vw'}}>
+                        Grade: {part.grade}<br />
+                        Price: {part.price}<br />
+                        Car Year: {part.carYear}<br />
+                        Car Make: {part.carMake}<br />
+                        Car Model: {part.carModel}
+                      </Typography>
+                  </Grid>
                 </CardContent>
               </CardActionArea>
               <CardActions>

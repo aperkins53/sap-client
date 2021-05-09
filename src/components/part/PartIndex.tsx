@@ -6,9 +6,9 @@ import PartTable from './PartTable';
 import PartEdit from './PartEdit';
 
 const PartIndex = (props) => {
-    const [parts, setParts] = useState([]);
-    const [updateActive, setUpdateActive] = useState(false);
-    const [partToUpdate, setPartToUpdate] = useState({});
+    const [parts, setParts] = useState<object[]>([]);
+    const [updateActive, setUpdateActive] = useState<boolean>(false);
+    const [partToUpdate, setPartToUpdate] = useState<object>({});
 
     const fetchParts = () => {
         fetch(`http://localhost:3000/part/`, {
@@ -52,11 +52,11 @@ const PartIndex = (props) => {
                     <PartCreate fetchParts={fetchParts} token={props.token} />
                 </Grid>
                 <hr />
-                <Grid>
+                <Grid container justify='space-around' direction='row'>
                     <PartTable parts={parts} editUpdatePart={editUpdatePart} updateOn={updateOn} updateOff={updateOff} fetchParts={fetchParts} token={props.token} partToUpdate={partToUpdate} />
                 </Grid>
                 {updateActive ? (
-                    <PartEdit partToUpdate={partToUpdate} updateOf={updateOff} token={props.token} fetchParts={fetchParts} updateActive={updateActive}/>
+                    <PartEdit partToUpdate={partToUpdate} updateOff={updateOff} token={props.token} fetchParts={fetchParts} updateActive={updateActive}/>
                 ) : (
                     <></>
                 )}

@@ -6,12 +6,12 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 
 const PartEdit = (props) => {
-    const [editPartName, setEditPartName] = useState(props.partToUpdate.partName);
-    const [editCondition, setEditCondition] = useState(props.partToUpdate.condition);
-    const [editPrice, setEditPrice] = useState(props.partToUpdate.price);
-    const [editCarYear, setEditCarYear] = useState(props.partToUpdate.carYear);
-    const [editCarMake, setEditCarMake] = useState(props.partToUpdate.carMake);
-    const [editCarModel, setEditCarModel] = useState(props.partToUpdate.carModel);
+    const [editPartName, setEditPartName] = useState<string>(props.partToUpdate.partName);
+    const [editGrade, setEditGrade] = useState<string>(props.partToUpdate.grade);
+    const [editPrice, setEditPrice] = useState<number>(props.partToUpdate.price);
+    const [editCarYear, setEditCarYear] = useState<number>(props.partToUpdate.carYear);
+    const [editCarMake, setEditCarMake] = useState<string>(props.partToUpdate.carMake);
+    const [editCarModel, setEditCarModel] = useState<string>(props.partToUpdate.carModel);
 
     function rand() {
         return Math.round(Math.random() * 20) - 10;
@@ -51,7 +51,7 @@ const PartEdit = (props) => {
     
         const body = (
           <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">Edit Car Listing</h2>
+            <h2 id="simple-modal-title">Edit Part Listing</h2>
             <form onSubmit={partUpdate}>
               <TextField
                 id="standard-basic"
@@ -62,9 +62,9 @@ const PartEdit = (props) => {
               />
               <TextField
                 id="standard-basic"
-                label="Condition"
-                onChange={(e) => setEditCondition(e.target.value)}
-                value={editCondition}
+                label="Grade"
+                onChange={(e) => setEditGrade(e.target.value)}
+                value={editGrade}
                 required
               />
               <TextField
@@ -118,12 +118,12 @@ const PartEdit = (props) => {
 
     const partUpdate = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:3000/car/update/${props.partToUpdate.id}`, {
+        fetch(`http://localhost:3000/part/update/${props.partToUpdate.id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 part: {
                     partName: editPartName,
-                    condition: editCondition,
+                    grade: editGrade,
                     price: editPrice,
                     carYear: editCarYear,
                     carMake: editCarMake,

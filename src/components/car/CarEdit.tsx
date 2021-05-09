@@ -5,13 +5,17 @@ import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 
 const CarEdit = (props) => {
-  const [editYear, setEditYear] = useState(props.carToUpdate.year);
-  const [editMake, setEditMake] = useState(props.carToUpdate.make);
-  const [editModel, setEditModel] = useState(props.carToUpdate.model);
-  const [editColor, setEditColor] = useState(props.carToUpdate.color);
-  const [editMileage, setEditMileage] = useState(props.carToUpdate.mileage);
-  const [editVin, setEditVin] = useState(props.carToUpdate.vin);
-  const [editDescription, setEditDescription] = useState(
+  const [editYear, setEditYear] = useState<number>(props.carToUpdate.year);
+  const [editMake, setEditMake] = useState<string>(props.carToUpdate.make);
+  const [editModel, setEditModel] = useState<string>(props.carToUpdate.model);
+  const [editExteriorColor, setEditExteriorColor] = useState<string>(props.carToUpdate.exteriorColor);
+  const [editInteriorColor, setEditInteriorColor] = useState<string>(props.carToUpdate.interiorColor);
+  const [editTransmission, setEditTransmission] = useState<string>(props.carToUpdate.transmission);
+  const [editDrivetrain, setEditDrivetrain] = useState<string>(props.carToUpdate.drivetrain);
+  const [editMileage, setEditMileage] = useState<number>(props.carToUpdate.mileage);
+  const [editVin, setEditVin] = useState<string>(props.carToUpdate.vin);
+  const [editPrice, setEditPrice] = useState<string>(props.carToUpdate.price)
+  const [editDescription, setEditDescription] = useState<string>(
     props.carToUpdate.description
   );
 
@@ -58,7 +62,7 @@ const CarEdit = (props) => {
           <TextField
             id="standard-basic"
             label="Year"
-            onChange={(e) => setEditYear(e.target.value)}
+            onChange={(e) => setEditYear(Number(e.target.value))}
             value={editYear}
             required
           />
@@ -78,15 +82,36 @@ const CarEdit = (props) => {
           />
           <TextField
             id="standard-basic"
-            label="Color"
-            onChange={(e) => setEditColor(e.target.value)}
-            value={editColor}
+            label="Exterior Color"
+            onChange={(e) => setEditExteriorColor(e.target.value)}
+            value={editExteriorColor}
+            required
+          />
+          <TextField
+            id="standard-basic"
+            label="Interior Color"
+            onChange={(e) => setEditInteriorColor(e.target.value)}
+            value={editInteriorColor}
+            required
+          />
+          <TextField
+            id="standard-basic"
+            label="Transmission"
+            onChange={(e) => setEditTransmission(e.target.value)}
+            value={editTransmission}
+            required
+          />
+          <TextField
+            id="standard-basic"
+            label="Drivetrain"
+            onChange={(e) => setEditDrivetrain(e.target.value)}
+            value={editDrivetrain}
             required
           />
           <TextField
             id="standard-basic"
             label="Mileage"
-            onChange={(e) => setEditMileage(e.target.value)}
+            onChange={(e) => setEditMileage(Number(e.target.value))}
             value={editMileage}
             required
           />
@@ -95,6 +120,13 @@ const CarEdit = (props) => {
             label="Vin"
             onChange={(e) => setEditVin(e.target.value)}
             value={editVin}
+            required
+          />
+          <TextField
+            id="standard-basic"
+            label="Price"
+            onChange={(e) => setEditPrice(e.target.value)}
+            value={editPrice}
             required
           />
           <TextField
@@ -134,9 +166,13 @@ const CarEdit = (props) => {
           year: editYear,
           make: editMake,
           model: editModel,
-          color: editColor,
+          exteriorColor: editExteriorColor,
+          InteriorColor: editInteriorColor,
+          transmission: editTransmission,
+          drivetrain: editDrivetrain,
           mileage: editMileage,
           vin: editVin,
+          price: editPrice,
           description: editDescription,
         },
       }),

@@ -6,9 +6,9 @@ import CarTable from './CarTable';
 import CarEdit from './CarEdit';
 
 const CarIndex = (props) => {
-    const [cars, setCars] = useState([]);
-    const [updateActive, setUpdateActive] = useState(false);
-    const [carToUpdate, setCarToUpdate] = useState({});
+    const [cars, setCars] = useState<object[]>([]);
+    const [updateActive, setUpdateActive] = useState<boolean>(false);
+    const [carToUpdate, setCarToUpdate] = useState<object>({});
 
     const fetchCars = () => {
         fetch(`http://localhost:3000/car/`, {
@@ -52,7 +52,7 @@ const CarIndex = (props) => {
                     <CarCreate fetchCars={fetchCars} token={props.token} />
                 </Grid>
                 <hr />
-                <Grid>
+                <Grid container justify='space-around' direction='row'>
                     <CarTable cars={cars} editUpdateCar={editUpdateCar} updateOn={updateOn} updateOff={updateOff} fetchCars={fetchCars} token={props.token} carToUpdate={carToUpdate} />
                 </Grid>
                 {updateActive ? (

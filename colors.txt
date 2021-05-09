@@ -4,5 +4,9 @@ light cyan - #D4F5F5
 cadet grey - #8C9A9E
 sonic silver - #747578
 
-how to save an image/display on card - blue badge modules cloudinary
-part component not working
+slides: 
+welcome/home page
+back story
+colors/database
+what did i do well/version 2
+links

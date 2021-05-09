@@ -37,37 +37,42 @@ const CarTable = (props) => {
 
   return props.cars.map((car, index) => {
     return(
-      <div style={{marginBottom: '20px'}}>
-        <Card className={classes.root} style={cardStyle}>
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image="#"
-              title="#"
-            />
-            <CardContent>
-              <Grid direction='row' >
-                <Typography gutterBottom variant="h5" component="h2" style={{color: '#93B7BE'}}>
-                  {car.year} {car.make} {car.model}
+        <div style={{marginBottom: '20px'}}>
+          <Card className={classes.root} style={cardStyle}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image={car.img}
+                title="#"
+                style={{height: '300px'}}
+              />
+              <CardContent>
+                <Grid direction='row' justify='center'>
+                  <Typography gutterBottom variant="h5" component="h2" style={{color: '#93B7BE'}}>
+                    {car.year} {car.make} {car.model}
+                  </Typography>
+                </Grid>
+                <Typography variant="body2" color="textSecondary" component="p" style={{color: '#93B7BE', width: '25vw'}}>
+                  Exterior Color: {car.exteriorColor}<br />
+                  Interior Color: {car.interiorColor}<br />
+                  Transmission: {car.transmission}<br />
+                  Drivetrain: {car.drivetrain}<br />
+                  Mileage: {car.mileage}<br />
+                  Price: {car.price}<br />
+                  Description: {car.description}
                 </Typography>
-              </Grid>
-              <Typography variant="body2" color="textSecondary" component="p" style={{color: '#93B7BE', width: '25vw'}}>
-                Color: {car.color}<br />
-                Mileage: {car.mileage}<br />
-                Description: {car.description}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button size="small" style={{color: '#93B7BE'}} onClick={() => {props.editUpdateCar(car); props.updateOn()}}>
-              Edit
-            </Button>
-            <Button size="small" style={{color: '#93B7BE'}} onClick={() => {deleteCar(car)}}>
-              Delete
-            </Button>
-          </CardActions>
-        </Card>
-      </div>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button size="small" style={{color: '#93B7BE'}} onClick={() => {props.editUpdateCar(car); props.updateOn()}}>
+                Edit
+              </Button>
+              <Button size="small" style={{color: '#93B7BE'}} onClick={() => {deleteCar(car)}}>
+                Delete
+              </Button>
+            </CardActions>
+          </Card>
+        </div>
     );
   });
 };
