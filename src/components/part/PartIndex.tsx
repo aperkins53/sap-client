@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import PartCreate from './PartCreate';
 import PartTable from './PartTable';
 import PartEdit from './PartEdit';
+import APIURL from '../../helpers/environment';
 
 const PartIndex = (props) => {
     const [parts, setParts] = useState<object[]>([]);
@@ -11,7 +12,7 @@ const PartIndex = (props) => {
     const [partToUpdate, setPartToUpdate] = useState<object>({});
 
     const fetchParts = () => {
-        fetch(`http://localhost:3000/part/`, {
+        fetch(`${APIURL}/part/`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',

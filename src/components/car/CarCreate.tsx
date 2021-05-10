@@ -4,6 +4,7 @@ import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import { Grid } from '@material-ui/core';
+import APIURL from '../../helpers/environment';
 
 export interface CarCreateProps {
     token: string;
@@ -40,7 +41,7 @@ const CarCreate: React.SFC<CarCreateProps> = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:3000/car/postSale', {
+        fetch(`${APIURL}/car/postSale`, {
             method: "POST",
             body: JSON.stringify({
                 car: {

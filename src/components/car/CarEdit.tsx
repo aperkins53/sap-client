@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
+import APIURL from '../../helpers/environment';
 
 const CarEdit = (props) => {
   const [editYear, setEditYear] = useState<number>(props.carToUpdate.year);
@@ -159,7 +160,7 @@ const CarEdit = (props) => {
 
   const carUpdate = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/car/update/${props.carToUpdate.id}`, {
+    fetch(`${APIURL}/car/update/${props.carToUpdate.id}`, {
       method: "PUT",
       body: JSON.stringify({
         car: {

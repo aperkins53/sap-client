@@ -8,10 +8,11 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Grid } from '@material-ui/core';
+import APIURL from '../../helpers/environment';
 
 const CarTable = (props) => {
   const deleteCar = (car) => {
-    fetch(`http://localhost:3000/car/delete/${car.id}`, {
+    fetch(`${APIURL}/car/delete/${car.id}`, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",

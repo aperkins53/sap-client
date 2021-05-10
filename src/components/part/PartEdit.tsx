@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField'
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
+import APIURL from '../../helpers/environment';
 
 const PartEdit = (props) => {
     const [editPartName, setEditPartName] = useState<string>(props.partToUpdate.partName);
@@ -118,7 +119,7 @@ const PartEdit = (props) => {
 
     const partUpdate = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:3000/part/update/${props.partToUpdate.id}`, {
+        fetch(`${APIURL}/part/update/${props.partToUpdate.id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 part: {

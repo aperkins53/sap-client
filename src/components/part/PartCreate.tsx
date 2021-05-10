@@ -4,6 +4,7 @@ import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import { Grid } from '@material-ui/core';
+import APIURL from '../../helpers/environment';
 
 export interface PartCreateProps {
     token: string;
@@ -32,7 +33,7 @@ const PartCreate: React.SFC<PartCreateProps> = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:3000/part/postSale', {
+        fetch(`${APIURL}/part/postSale`, {
             method: 'POST',
             body: JSON.stringify({
                 part: {

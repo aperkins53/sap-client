@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import CarCreate from './CarCreate';
 import CarTable from './CarTable';
 import CarEdit from './CarEdit';
+import APIURL from '../../helpers/environment';
 
 const CarIndex = (props) => {
     const [cars, setCars] = useState<object[]>([]);
@@ -11,7 +12,7 @@ const CarIndex = (props) => {
     const [carToUpdate, setCarToUpdate] = useState<object>({});
 
     const fetchCars = () => {
-        fetch(`http://localhost:3000/car/`, {
+        fetch(`${APIURL}/car/`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
