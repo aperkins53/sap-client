@@ -1,6 +1,8 @@
 import * as React from 'react';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
+import APIURL from '../helpers/environment';
+
 
 export interface SignupProps{
     setToken: React.Dispatch<React.SetStateAction<string>>;
@@ -34,7 +36,7 @@ class Signup extends React.Component<SignupProps, SignupState> {
             alert('Password needs to be at least 8 characters.')
         }
 
-        const url = `http://localhost:3000/user/register`;
+        const url = `${APIURL}/user/register`;
 
         const body: ReqSignup = {
             user: {

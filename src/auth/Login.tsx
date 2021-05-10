@@ -1,6 +1,7 @@
 import * as React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import APIURL from '../helpers/environment';
 
 export interface LoginProps{
     setToken: React.Dispatch<React.SetStateAction<string>>;
@@ -22,7 +23,7 @@ class Login extends React.Component<LoginProps, LoginState> {
 
     onSubmit = (e) => {
         e.preventDefault();
-        const url = 'http://localhost:3000/user/login';
+        const url = `${APIURL}/user/login`;
         const body: ReqLogin = {
             user: {
                 email: this.state.email,
