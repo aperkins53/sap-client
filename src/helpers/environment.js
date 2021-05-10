@@ -7,9 +7,9 @@ switch (window.location.hostname) {
  APIURL = 'http://localhost:3000';
  break;
  // this is the deployed react application
- case 'sap-client-ap.herokuapp.com':
+ case 'sap-server.herokuapp.com':
  // this is the full url of your deployed API
- APIURL = 'https://sap-client-ap.herokuapp.com'
+ APIURL = 'https://sap-server.herokuapp.com'
 }
 
 export default APIURL;
